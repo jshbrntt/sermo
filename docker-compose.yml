@@ -1,0 +1,19 @@
+version: '3.3'
+services:
+  refero:
+    build: ./refero
+    volumes:
+      - refero_node_modules:/usr/src/node_modules
+      - ./refero:/usr/src
+  nuntius:
+    build: ./nuntius
+    volumes:
+      - nuntius_node_modules:/usr/src/node_modules
+      - ./nuntius:/usr/src
+    ports:
+      - 3000:3000
+    depends_on:
+      - refero
+volumes:
+  refero_node_modules:
+  nuntius_node_modules:
