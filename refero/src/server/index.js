@@ -12,15 +12,18 @@ class ReferoServer {
   }
   _onConnection (socket) {
     this._sockets.set(socket.id, socket)
+    socket.broadcast.emit('connected', { id: socket.id })
     socket.on('disconnect', this._onDisconnect.bind(this, socket))
     socket.on('message', this._onMessage.bind(this, socket))
     debug(`${socket.id}: connected`)
   }
   _onDisconnect (socket) {
     this._sockets.delete(socket.id)
+    socket.broadcast.emit('disconnected', { id: socket.id })
     debug(`${socket.id}: disconnected`)
   }
   _onMessage (socket, data) {
+    socket.broadcast.emit('message', { id: socket.id, content: data })
     debug(`${socket.id}: message`)
     debug(data)
   }
