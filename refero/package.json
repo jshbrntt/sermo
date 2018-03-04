@@ -1,0 +1,12 @@
+{
+  "name": "refero",
+  "version": "1.0.0",
+  "description": "A WebSocket messaging server.",
+  "main": "index.js",
+  "author": "Joshua Barnett <jbacontrol@gmail.com>",
+  "license": "UNLICENSED",
+  "private": true,
+  "dependencies": {
+    "socket.io": "^2.0.4"
+  }
+}
