@@ -7,7 +7,9 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "start": "nodemon ./src/main.js"
+    "start": "node ./src/main.js",
+    "debug:start": "nodemon --inspect-brk=0.0.0.0:9229 ./src/main.js",
+    "debug": "nodemon --inspect=0.0.0.0:9229 ./src/main.js"
   },
   "dependencies": {
     "debug": "^3.1.0",
