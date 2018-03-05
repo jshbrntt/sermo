@@ -7,7 +7,7 @@ class ReferoServer {
     this._sockets = new Map()
     this._setup()
   }
-  _setup() {
+  _setup () {
     this._io.on('connection', this._onConnection.bind(this))
   }
   _onConnection (socket) {
