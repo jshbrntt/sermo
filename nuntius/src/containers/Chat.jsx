@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { sendMessage, receiveMessage } from '../../store/modules/chat'
 import io from 'socket.io-client'
 
-class ChatContainer extends React.Component {
+class Chat extends React.Component {
   constructor (props) {
     super(props)
     this.handleChange = this.handleChange.bind(this)
@@ -55,4 +55,4 @@ const mapDispatchToProps = dispatch =>
     dispatch
   )
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChatContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(Chat)

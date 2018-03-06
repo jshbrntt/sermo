@@ -1,18 +1,11 @@
-import debug from 'debug'
-
-const log = debug('nuntius:chat')
-log.log = console.log.bind(console)
-
-export const MESSAGE_SEND = 'chat/MESSAGE_SEND'
-export const MESSAGE_SENT = 'chat/MESSAGE_SENT'
-export const MESSAGE_RECEIVED = 'chat/MESSAGE_RECEIVED'
+import { MESSAGE_SEND, MESSAGE_SENT, MESSAGE_RECEIVED } from '../actions/chat'
 
 const initialState = {
   content: '',
   messages: []
 }
 
-export default (state = initialState, action) => {
+const chat = (state = initialState, action) => {
   switch (action.type) {
     case MESSAGE_SEND:
       return {
@@ -55,30 +48,4 @@ export default (state = initialState, action) => {
   }
 }
 
-export const sendMessage = (socket, content) => {
-  return dispatch => {
-    log('nuntius:MESSAGE_SEND', content)
-    dispatch({
-      type: MESSAGE_SEND,
-      content
-    })
-    socket.emit('message', { content }, data => {
-      log('nuntius:MESSAGE_SENT', data)
-      dispatch({
-        type: MESSAGE_SENT
-      })
-    })
-  }
-}
-
-export const receiveMessage = socket => {
-  return dispatch => {
-    socket.on('message', data => {
-      log('nuntius:MESSAGE_RECEIVED', data)
-      dispatch({
-        type: MESSAGE_RECEIVED,
-        content: data.content
-      })
-    })
-  }
-}
+export default chat
