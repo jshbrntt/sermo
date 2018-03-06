@@ -22,8 +22,9 @@ class ReferoServer {
     socket.broadcast.emit('disconnected', { id: socket.id })
     debug(`${socket.id}: disconnected`)
   }
-  _onMessage (socket, data) {
-    socket.broadcast.emit('message', { id: socket.id, content: data })
+  _onMessage (socket, data, fn) {
+    if (fn) fn('received')
+    socket.broadcast.emit('message', { id: socket.id, content: data.content })
     debug(`${socket.id}: message`)
     debug(data)
   }

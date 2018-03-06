@@ -1,17 +1,20 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { render } from 'react-dom'
 import './index.css'
-import App from './App'
+import { Provider } from 'react-redux'
+import { ConnectedRouter } from 'react-router-redux'
+import store, { history } from './store'
+import App from './containers/app'
 import registerServiceWorker from './registerServiceWorker'
 
-import io from 'socket.io-client'
-const socket = io('http://localhost:3001')
-
-socket.emit('message', { content: 'Hello World!' })
-
-socket.on('message', data => {
-  console.log('received message', data)
-})
-
-ReactDOM.render(<App />, document.getElementById('root'))
+render(
+  <Provider store={store}>
+    <ConnectedRouter history={history}>
+      <div>
+        <App />
+      </div>
+    </ConnectedRouter>
+  </Provider>,
+  document.getElementById('root')
+)
 registerServiceWorker()
