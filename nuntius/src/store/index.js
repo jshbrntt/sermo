@@ -1,6 +1,8 @@
 import createHistory from 'history/createBrowserHistory'
-import configureStore from 'configureStore'
+import configureStore from './configureStore'
 
 export const history = createHistory()
 
-export default configureStore(history)
+const store = configureStore(history)
+
+export default store

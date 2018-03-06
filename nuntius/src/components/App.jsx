@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route } from 'react-router-dom'
-import Chat from '../chat'
+import Chat from '../containers/Chat'
 
 const App = () => (
   <main>

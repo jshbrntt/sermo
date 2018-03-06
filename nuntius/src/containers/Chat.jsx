@@ -1,58 +1,58 @@
 import React from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { sendMessage, receiveMessage } from '../../store/modules/chat'
+import { MessageForm } from '../components/MessageForm'
+import { MessageList } from '../components/MessageList'
+import { inputChanged, clearInput } from '../actions/form'
+import { sendMessage, receiveMessage } from '../actions/messages'
 import io from 'socket.io-client'
 
 class Chat extends React.Component {
   constructor (props) {
     super(props)
-    this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
     this.socket = io('http://localhost:3001')
     this.props.receiveMessage(this.socket)
+    this.handleChange = this.handleChange.bind(this)
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
   render () {
     return (
       <section>
-        <ul>
-          {this.props.messages.map(message => (
-            <li key={message.key}>
-              [{message.key}]: {message.content} ({message.status})
-            </li>
-          ))}
-        </ul>
-        <form onSubmit={this.handleSubmit}>
-          <textarea onChange={this.handleChange} />
-          <input type='submit' value='Submit' />
-        </form>
+        <MessageList messages={this.props.messages} />
+        <MessageForm input={this.props.form.input} onChange={this.handleChange} onSubmit={this.handleSubmit} />
       </section>
     )
   }
   handleChange (event) {
-    this.setState({
-      ...this.state,
-      content: event.target.value
-    })
+    this.props.inputChanged(event.target.value)
   }
   handleSubmit (event) {
     event.preventDefault()
     event.stopPropagation()
-    this.props.sendMessage(this.socket, this.state.content)
+    this.props.sendMessage(this.socket, this.props.form.input)
+    this.props.clearInput()
   }
 }
 
 const mapStateToProps = state => {
-  return state.chat
+  return {
+    form: state.form,
+    messages: state.messages
+  }
 }
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators(
     {
       sendMessage,
-      receiveMessage
+      receiveMessage,
+      inputChanged,
+      clearInput
     },
     dispatch
   )
 
-export default connect(mapStateToProps, mapDispatchToProps)(Chat)
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Chat)
