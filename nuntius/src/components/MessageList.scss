@@ -1,7 +1,6 @@
 $black: #000;
-$green: #0eb721;
+$green: #91d446;
 $grey: #e5e5ea;
-$white: #fff;
 
 .MessageList {
   display: flex;
@@ -42,7 +41,6 @@ $white: #fff;
     &.me {
       align-self: flex-end;
       background-color: $green;
-      color: $white;
       margin-right: .5em;
 
       &::after {
