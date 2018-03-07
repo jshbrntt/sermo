@@ -21,6 +21,7 @@ class Chat extends React.Component {
   render () {
     return (
       <section className='Chat'>
+        <h1 className='nickname'>{this.props.them}</h1>
         <MessageList messages={this.props.messages} />
         <MessageForm input={this.props.form.input} onChange={this.handleChange} onSubmit={this.handleSubmit} />
       </section>
@@ -44,10 +45,10 @@ class Chat extends React.Component {
 }
 
 const mapStateToProps = state => {
-  document.title = state.commands.nicks.them
   return {
     form: state.form,
-    messages: state.messages
+    messages: state.messages,
+    them: state.commands.nicks.them
   }
 }
 
