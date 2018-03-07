@@ -1,8 +1,13 @@
 $atlantis: #90d445;
 $black: #212121;
 $light-gray: #d1d1d1;
+$link-water: #dbe1ed;
+$shadow-color: transparentize($black, .6);
+$message-shadow-right: .6em .4em 1em $shadow-color;
+$message-shadow-left: -.5em .3em 1em $shadow-color;
 
 .MessageList {
+  background: $link-water;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -13,42 +18,42 @@ $light-gray: #d1d1d1;
   li {
     background: $light-gray;
     border-radius: 1em;
+    color: $black;
     margin: 0 0 0.5em;
     max-width: 75%;
     padding: 0.5em 1em;
     position: relative;
+
+    &::after {
+      position: absolute;
+      bottom: 0;
+      content: '';
+      height: 1em;
+      width: 0.5em;
+    }
     
     &.them {
       align-self: flex-start;
       margin-left: .5em;
+      box-shadow: $message-shadow-left;
       
       &::after {
         border-bottom-right-radius: 1em 0.5em;
         border-right: 0.5em solid $light-gray;
-        bottom: 0;
-        content: '';
-        height: 1em;
         left: -0.5em;
-        position: absolute;
-        width: 0.5em;
       }
     }
     
     &.me {
       align-self: flex-end;
       background-color: $atlantis;
-      color: $black;
       margin-right: .5em;
+      box-shadow: $message-shadow-right;
      
       &::after {
         border-bottom-left-radius: 1em 0.5em;
         border-left: 0.5em solid $atlantis;
-        bottom: 0;
-        content: '';
-        height: 1em;
-        position: absolute;
         right: -0.5em;
-        width: 0.5em;
       }
     }
   }  
