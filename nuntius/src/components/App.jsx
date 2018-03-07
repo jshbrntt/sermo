@@ -1,6 +1,7 @@
-import React from 'react'
+import './App.scss'
 import { Route } from 'react-router-dom'
-import Chat from '../chat'
+import Chat from '../containers/Chat'
+import React from 'react'
 
 const App = () => (
   <main>

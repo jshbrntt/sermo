@@ -1,0 +1,9 @@
+.Chat {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+
+  .MessageList {
+    flex-grow: 1;
+  }
+}

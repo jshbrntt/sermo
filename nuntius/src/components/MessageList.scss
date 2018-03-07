@@ -1,0 +1,61 @@
+$black: #000;
+$green: #91d446;
+$grey: #e5e5ea;
+
+.MessageList {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    background: $grey;
+    border-radius: 1em;
+    color: $black;
+    margin: 0 0 0.5em;
+    max-width: 75%;
+    padding: 0.5em 1em;
+    position: relative;
+
+    &::after {
+      position: absolute;
+      bottom: 0;
+      content: '';
+      height: 1em;
+      width: 0.5em;
+    }
+
+    &.them {
+      align-self: flex-start;
+      margin-left: .5em;
+
+      &.think {
+        color: darken($grey, 30%);
+      }
+
+      &::after {
+        border-bottom-right-radius: 1em 0.5em;
+        border-right: 0.5em solid $grey;
+        left: -0.5em;
+      }
+    }
+
+    &.me {
+      align-self: flex-end;
+      background-color: $green;
+      margin-right: .5em;
+
+      &.think {
+        color: darken($green, 20%);
+      }
+
+      &::after {
+        border-bottom-left-radius: 1em 0.5em;
+        border-left: 0.5em solid $green;
+        right: -0.5em;
+      }
+    }
+  }  
+}
