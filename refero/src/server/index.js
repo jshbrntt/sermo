@@ -15,6 +15,7 @@ class ReferoServer {
     socket.broadcast.emit('connected', { id: socket.id })
     socket.on('disconnect', this._onDisconnect.bind(this, socket))
     socket.on('message', this._onMessage.bind(this, socket))
+    socket.on('command', this._onCommand.bind(this, socket))
     debug(`${socket.id}: connected`)
   }
   _onDisconnect (socket) {
@@ -26,6 +27,12 @@ class ReferoServer {
     if (fn) fn('received')
     socket.broadcast.emit('message', { id: socket.id, content: data.content })
     debug(`${socket.id}: message`)
+    debug(data)
+  }
+  _onCommand (socket, data, fn) {
+    if (fn) fn('received')
+    socket.broadcast.emit('message', { id: socket.id, command: data.command, args: data.args })
+    debug(`${socket.id}: command`)
     debug(data)
   }
   listen (port = 3000) {
