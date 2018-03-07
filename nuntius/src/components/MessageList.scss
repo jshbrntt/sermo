@@ -1,5 +1,5 @@
 $black: #000;
-$blue: #1289fe;
+$green: #0eb721;
 $grey: #e5e5ea;
 $white: #fff;
 
@@ -41,13 +41,13 @@ $white: #fff;
 
     &.me {
       align-self: flex-end;
-      background-color: $blue;
+      background-color: $green;
       color: $white;
       margin-right: .5em;
 
       &::after {
         border-bottom-left-radius: 1em 0.5em;
-        border-left: 0.5em solid $blue;
+        border-left: 0.5em solid $green;
         right: -0.5em;
       }
     }
