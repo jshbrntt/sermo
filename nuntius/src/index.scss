@@ -1,0 +1,11 @@
+html, body, #root, main {
+  font-family: sans-serif;
+  height: 100vh;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+}
+
+main {
+  display: flex;
+}
