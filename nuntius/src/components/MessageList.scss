@@ -1,7 +1,55 @@
+$atlantis: #90d445;
+$black: #212121;
+$light-gray: #d1d1d1;
+
 .MessageList {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  list-style: none;
   margin: 0;
   padding: 0;
+
+  li {
+    background: $light-gray;
+    border-radius: 1em;
+    margin: 0 0 0.5em;
+    max-width: 75%;
+    padding: 0.5em 1em;
+    position: relative;
+    
+    &.them {
+      align-self: flex-start;
+      margin-left: .5em;
+      
+      &::after {
+        border-bottom-right-radius: 1em 0.5em;
+        border-right: 0.5em solid $light-gray;
+        bottom: 0;
+        content: '';
+        height: 1em;
+        left: -0.5em;
+        position: absolute;
+        width: 0.5em;
+      }
+    }
+    
+    &.me {
+      align-self: flex-end;
+      background-color: $atlantis;
+      color: $black;
+      margin-right: .5em;
+     
+      &::after {
+        border-bottom-left-radius: 1em 0.5em;
+        border-left: 0.5em solid $atlantis;
+        bottom: 0;
+        content: '';
+        height: 1em;
+        position: absolute;
+        right: -0.5em;
+        width: 0.5em;
+      }
+    }
+  }  
 }
