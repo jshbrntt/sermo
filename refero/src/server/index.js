@@ -31,7 +31,7 @@ class ReferoServer {
   }
   _onCommand (socket, data, fn) {
     if (fn) fn('received')
-    socket.broadcast.emit('message', { id: socket.id, command: data.command, args: data.args })
+    socket.broadcast.emit('command', { id: socket.id, command: data.command, args: data.args })
     debug(`${socket.id}: command`)
     debug(data)
   }
