@@ -1,8 +1,9 @@
+import './MessageForm.scss'
 import React from 'react'
 
 export function MessageForm ({ input, onSubmit, onChange }) {
   return (
-    <form onSubmit={onSubmit}>
+    <form className='MessageForm' onSubmit={onSubmit}>
       <input value={input} type='text' onChange={onChange} />
       <button type='submit'>
         Send

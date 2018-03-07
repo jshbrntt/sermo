@@ -1,11 +1,12 @@
-import React from 'react'
+import './Chat.scss'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { inputChanged, clearInput } from '../actions/form'
 import { MessageForm } from '../components/MessageForm'
 import { MessageList } from '../components/MessageList'
-import { inputChanged, clearInput } from '../actions/form'
 import { sendMessage, receiveMessage } from '../actions/messages'
 import io from 'socket.io-client'
+import React from 'react'
 
 class Chat extends React.Component {
   constructor (props) {
@@ -17,7 +18,7 @@ class Chat extends React.Component {
   }
   render () {
     return (
-      <section>
+      <section className='Chat'>
         <MessageList messages={this.props.messages} />
         <MessageForm input={this.props.form.input} onChange={this.handleChange} onSubmit={this.handleSubmit} />
       </section>
