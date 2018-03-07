@@ -1,3 +1,5 @@
+$black: #000;
+
 .Chat {
   display: flex;
   flex: 1;
@@ -5,5 +7,12 @@
 
   .MessageList {
     flex-grow: 1;
+  }
+
+  .nickname {
+    border-bottom: .1em solid $black;
+    margin: 0;
+    padding: .4em;
+    text-align: center;
   }
 }
