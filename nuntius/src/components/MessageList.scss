@@ -1,13 +1,9 @@
-$atlantis: #90d445;
-$black: #212121;
-$light-gray: #d1d1d1;
-$link-water: #dbe1ed;
-$shadow-color: transparentize($black, .7);
-$message-shadow-right: .6em .4em 1em $shadow-color;
-$message-shadow-left: -.5em .3em 1em $shadow-color;
+$black: #000;
+$blue: #1289fe;
+$grey: #e5e5ea;
+$white: #fff;
 
 .MessageList {
-  background: $link-water;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -16,7 +12,7 @@ $message-shadow-left: -.5em .3em 1em $shadow-color;
   padding: 0;
 
   li {
-    background: $light-gray;
+    background: $grey;
     border-radius: 1em;
     color: $black;
     margin: 0 0 0.5em;
@@ -31,28 +27,27 @@ $message-shadow-left: -.5em .3em 1em $shadow-color;
       height: 1em;
       width: 0.5em;
     }
-    
+
     &.them {
       align-self: flex-start;
       margin-left: .5em;
-      box-shadow: $message-shadow-left;
-      
+
       &::after {
         border-bottom-right-radius: 1em 0.5em;
-        border-right: 0.5em solid $light-gray;
+        border-right: 0.5em solid $grey;
         left: -0.5em;
       }
     }
-    
+
     &.me {
       align-self: flex-end;
-      background-color: $atlantis;
+      background-color: $blue;
+      color: $white;
       margin-right: .5em;
-      box-shadow: $message-shadow-right;
-     
+
       &::after {
         border-bottom-left-radius: 1em 0.5em;
-        border-left: 0.5em solid $atlantis;
+        border-left: 0.5em solid $blue;
         right: -0.5em;
       }
     }
