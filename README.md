@@ -2,7 +2,7 @@
 A messaging application.
 
 ## Demo
-![demo](https://media.giphy.com/media/cd5bowgq2aCVXKWLR6/giphy.gif)
+![demo](https://i.imgur.com/RS03Nu0.gif)
 
 ## Requirements
 
