@@ -1,8 +1,21 @@
 import createHistory from 'history/createBrowserHistory'
 import configureStore from './configureStore'
+import { loadState, saveState } from './localStorage'
 
 export const history = createHistory()
 
-const store = configureStore(history)
+const persistedState = loadState()
+
+const store = configureStore(history, persistedState)
+
+store.subscribe(() => {
+  let state = store.getState()
+  saveState({
+    messages: state.messages.slice(-10), // Last ten messages
+    commands: {
+      nicks: state.commands.nicks // Nicknames
+    }
+  })
+})
 
 export default store
