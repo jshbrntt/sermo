@@ -2,11 +2,11 @@ $black: #000;
 $white: #fff;
 
 .MessageForm {
+  align-content: stretch;
   display: flex;
   font-size: 1em;
-  height: 4em;
+  min-height: 4em;
   outline: none;
-  align-content: stretch;
 
   input {
     border-radius: .5em 0 0 .5em;
