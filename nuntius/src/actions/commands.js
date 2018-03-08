@@ -1,6 +1,9 @@
+import { sendMessage } from './messages'
+
 export const SENT_COMMAND = 'SENT_COMMAND'
 export const RECEIVED_COMMAND = 'RECEIVED_COMMAND'
 export const COMMAND_NICK = 'nick'
+export const COMMAND_THINK = 'think'
 
 export const sendCommand = (socket, command, args) => {
   return dispatch => {
@@ -13,6 +16,11 @@ export const sendCommand = (socket, command, args) => {
       command,
       args
     })
+    switch (command) {
+      case COMMAND_THINK:
+        sendMessage(socket, args.join(' '), { think: true })(dispatch)
+        break
+    }
   }
 }
 
