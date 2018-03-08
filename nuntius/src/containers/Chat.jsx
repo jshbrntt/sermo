@@ -12,7 +12,7 @@ import React from 'react'
 class Chat extends React.Component {
   constructor (props) {
     super(props)
-    this.socket = io('http://localhost:3001')
+    this.socket = io(`http://${window.location.hostname}:3001`)
     this.props.receiveMessage(this.socket)
     this.props.receiveCommand(this.socket)
     this.handleChange = this.handleChange.bind(this)
