@@ -29,9 +29,10 @@ export const receiveMessage = socket => {
   }
 }
 
-export const removeLastMessage = socket => {
+export const removeLastMessage = args => {
   return dispatch => {
     dispatch({
+      ...args,
       type: MESSAGE_REMOVE_LAST
     })
   }
