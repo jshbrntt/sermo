@@ -1,14 +1,12 @@
 import { MESSAGE_SEND, MESSAGE_SENT, MESSAGE_RECEIVED } from '../actions/messages'
 
 const messages = (state = [], action) => {
+  const { type, ...message } = action
   switch (action.type) {
     case MESSAGE_SEND:
       return [
         ...state,
-        {
-          content: action.content,
-          status: 'sending'
-        }
+        message
       ]
     case MESSAGE_SENT:
       let lastMessage = state[state.length - 1]
@@ -16,16 +14,16 @@ const messages = (state = [], action) => {
         ...state.slice(0, -1),
         {
           ...lastMessage,
-          status: 'sent'
+          metadata: {
+            ...lastMessage.metadata,
+            sent: true
+          }
         }
       ]
     case MESSAGE_RECEIVED:
       return [
         ...state,
-        {
-          content: action.content,
-          status: 'received'
-        }
+        message
       ]
     default:
       return state
