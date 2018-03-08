@@ -33,14 +33,16 @@ class Chat extends React.Component {
   handleSubmit (event) {
     event.preventDefault()
     event.stopPropagation()
-    if (this.props.form.input[0] === '/') {
-      let args = this.props.form.input.slice(1).split(' ')
-      let command = args.shift()
-      this.props.sendCommand(this.socket, command, args)
-    } else {
-      this.props.sendMessage(this.socket, this.props.form.input)
+    if (this.props.form.input) {
+      if (this.props.form.input[0] === '/') {
+        let args = this.props.form.input.slice(1).split(' ')
+        let command = args.shift()
+        this.props.sendCommand(this.socket, command, args)
+      } else {
+        this.props.sendMessage(this.socket, this.props.form.input)
+      }
+      this.props.clearInput()
     }
-    this.props.clearInput()
   }
 }
 
