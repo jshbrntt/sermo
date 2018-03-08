@@ -18,6 +18,9 @@ export class MessageList extends React.Component {
       this.scrollToBottom()
     }
   }
+  componentDidMount () {
+    this.scrollToBottom()
+  }
   render () {
     return (
       <div ref='elem' className='MessageList' onScroll={this.onScroll}>
