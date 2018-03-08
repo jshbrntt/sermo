@@ -1,7 +1,13 @@
 @import "../styles/colors";
 
 .MessageList {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
+  overflow-y: auto;
+
+  .Messages {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 0;
+    overflow: auto;
+  }
 }

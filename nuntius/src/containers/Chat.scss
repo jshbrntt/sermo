@@ -2,8 +2,9 @@
 
 .Chat {
   display: flex;
-  flex: 1;
   flex-direction: column;
+  flex-grow: 1;
+  min-height: 0;
 
   .MessageList {
     flex-grow: 1;
