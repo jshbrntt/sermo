@@ -12,9 +12,7 @@ store.subscribe(() => {
   let state = store.getState()
   saveState({
     messages: state.messages.slice(-10), // Last ten messages
-    commands: {
-      nicks: state.commands.nicks // Nicknames
-    }
+    nicknames: state.nicknames
   })
 })
 

@@ -21,7 +21,7 @@ class Chat extends React.Component {
   render () {
     return (
       <section className='Chat'>
-        <h1 className='nickname'>{this.props.them}</h1>
+        <h1 className='nickname'>{this.props.nicknames.them}</h1>
         <MessageList messages={this.props.messages} />
         <MessageForm input={this.props.form.input} onChange={this.handleChange} onSubmit={this.handleSubmit} />
       </section>
@@ -50,7 +50,7 @@ const mapStateToProps = state => {
   return {
     form: state.form,
     messages: state.messages,
-    them: state.commands.nicks.them
+    nicknames: state.nicknames
   }
 }
 
