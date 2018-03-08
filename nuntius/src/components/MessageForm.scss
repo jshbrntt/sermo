@@ -1,0 +1,33 @@
+@import "../styles/colors";
+
+.MessageForm {
+  align-content: stretch;
+  display: flex;
+  font-size: 1em;
+  min-height: 4em;
+  outline: none;
+
+  input {
+    border-radius: .5em 0 0 .5em;
+    border: .2em solid $black;
+    border-right: 0;
+    flex-grow: 1;
+    font-size: inherit;
+    margin: .4em 0 .4em .4em;
+    outline: inherit;
+    padding: .1em .5em;
+  }
+
+  button {
+    background: $black;
+    border-radius: 0 .5em .5em 0;
+    border: .2em solid $black;
+    color: $white;
+    cursor: pointer;
+    font-size: inherit;
+    margin: .4em .4em .4em 0;
+    outline: inherit;
+    padding: .1em 2em;
+    text-align: center;
+  }
+}

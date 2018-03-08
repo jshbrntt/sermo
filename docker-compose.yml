@@ -1,0 +1,27 @@
+version: '3.3'
+services:
+  refero:
+    build: ./refero
+    command: yarn debug
+    environment:
+      DEBUG: refero:*
+    ports:
+      - 3001:3000
+      - 9229:9229
+    volumes:
+      - refero_node_modules:/usr/src/node_modules
+      - ./refero:/usr/src
+  nuntius:
+    build: ./nuntius
+    depends_on:
+      - refero
+    environment:
+      DEBUG: nuntius:*
+    ports:
+      - 3000:3000
+    volumes:
+      - nuntius_node_modules:/usr/src/node_modules
+      - ./nuntius:/usr/src
+volumes:
+  refero_node_modules:
+  nuntius_node_modules:
