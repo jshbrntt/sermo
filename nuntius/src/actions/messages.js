@@ -20,8 +20,8 @@ export const receiveMessage = socket => {
   return dispatch => {
     socket.on('message', data => {
       dispatch({
-        type: MESSAGE_RECEIVED,
-        content: data.content
+        ...data,
+        type: MESSAGE_RECEIVED
       })
     })
   }
