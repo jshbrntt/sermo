@@ -26,6 +26,10 @@ A messaging application.
 3.
     Navigate to web application (http://localhost:3000 by default).
 
+### Walkthrough
+
+[![asciicast](https://asciinema.org/a/4Ud6es5xUoHWEmYgyR7NleeqX.png)](https://asciinema.org/a/4Ud6es5xUoHWEmYgyR7NleeqX)
+
 ## Code Style
 
 - [JavaScript Standard Style][standardjs]
