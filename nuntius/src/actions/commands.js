@@ -20,6 +20,8 @@ export const sendCommand = (socket, command, args) => {
       case COMMAND_THINK:
         sendMessage(socket, args.join(' '), { think: true })(dispatch)
         break
+      default:
+        window.alert(`Command '${command}' not implemented.`)
     }
   }
 }
