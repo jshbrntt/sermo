@@ -2,13 +2,14 @@ export const MESSAGE_SEND = 'MESSAGE_SEND'
 export const MESSAGE_SENT = 'MESSAGE_SENT'
 export const MESSAGE_RECEIVED = 'MESSAGE_RECEIVED'
 
-export const sendMessage = (socket, content) => {
+export const sendMessage = (socket, content, metadata = {}) => {
   return dispatch => {
     dispatch({
       type: MESSAGE_SEND,
-      content
+      content,
+      metadata
     })
-    socket.emit('message', { content }, data => {
+    socket.emit('message', { content, metadata }, data => {
       dispatch({
         type: MESSAGE_SENT
       })
@@ -20,8 +21,8 @@ export const receiveMessage = socket => {
   return dispatch => {
     socket.on('message', data => {
       dispatch({
-        type: MESSAGE_RECEIVED,
-        content: data.content
+        ...data,
+        type: MESSAGE_RECEIVED
       })
     })
   }
