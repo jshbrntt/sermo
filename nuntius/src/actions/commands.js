@@ -33,10 +33,18 @@ export const sendCommand = (socket, command, args) => {
 export const receiveCommand = socket => {
   return dispatch => {
     socket.on('command', data => {
+      let { command } = data
       dispatch({
         ...data,
         type: RECEIVED_COMMAND
       })
+      switch (command) {
+        case COMMAND_OOPS:
+          removeLastMessage({them: true})(dispatch)
+          break
+        default:
+          window.alert(`Command '${command}' not implemented.`)
+      }
     })
   }
 }
