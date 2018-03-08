@@ -3,15 +3,8 @@ import React from 'react'
 import { Message } from '../components/Message'
 
 export class MessageList extends React.Component {
-  constructor (props) {
-    super(props)
-    this.onScroll = this.onScroll.bind(this)
-  }
-  onScroll (event) {
-    console.log(this.refs.elem.scrollTop)
-  }
   scrollToBottom () {
-    this.refs.elem.scrollTop = this.refs.elem.offsetHeight
+    this.refs.scrollable.scrollTop = this.refs.scrollable.offsetHeight
   }
   componentDidUpdate (prevProps, prevState) {
     if (this.props.messages.length !== prevProps.messages.length) {
@@ -23,11 +16,13 @@ export class MessageList extends React.Component {
   }
   render () {
     return (
-      <div ref='elem' className='MessageList' onScroll={this.onScroll}>
-        <div className='Messages'>
-          {this.props.messages.map((message, index) => (
-            <Message key={index} message={message} />
-          ))}
+      <div className='MessageList'>
+        <div ref='scrollable' className='List'>
+          <div className='Messages'>
+            {this.props.messages.map((message, index) => (
+              <Message key={index} message={message} />
+            ))}
+          </div>
         </div>
       </div>
     )
