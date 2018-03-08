@@ -1,6 +1,9 @@
 # Sermo
 A messaging application.
 
+## Demo
+![demo](https://media.giphy.com/media/cd5bowgq2aCVXKWLR6/giphy.gif)
+
 ## Requirements
 
 - [Docker Community Edition][docker-ce] >= 17.12.0-ce
