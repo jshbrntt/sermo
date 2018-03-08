@@ -1,4 +1,4 @@
-import { MESSAGE_SEND, MESSAGE_SENT, MESSAGE_RECEIVED } from '../actions/messages'
+import { MESSAGE_SEND, MESSAGE_SENT, MESSAGE_RECEIVED, MESSAGE_REMOVE_LAST } from '../actions/messages'
 
 const messages = (state = [], action) => {
   const { type, ...message } = action
@@ -25,6 +25,17 @@ const messages = (state = [], action) => {
         ...state,
         message
       ]
+    case MESSAGE_REMOVE_LAST:
+      let reversedMessages = [...state].reverse()
+      // If 'them' is set on 'action' then remove their last message, instead of mine.
+      let lastClientMessage = reversedMessages.find(message => action['them'] ? message['id'] : !message['id'])
+      let lastClientMessageIndex = state.indexOf(lastClientMessage)
+      if (lastClientMessageIndex < 0) {
+        return state
+      }
+      let newState = [...state]
+      newState.splice(lastClientMessageIndex, 1)
+      return newState
     default:
       return state
   }
